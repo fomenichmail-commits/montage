@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Montage — монтаж видео</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">▶ Montage</div>
+    <div class="topbar-actions">
+      <span id="save-status" class="muted"></span>
+      <button id="export-btn" class="primary">Экспорт MP4</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel library">
+      <div class="panel-head">
+        <h2>Медиатека</h2>
+        <label class="button">
+          + Добавить
+          <input id="file-input" type="file" multiple accept="video/*,image/*,audio/*" hidden>
+        </label>
+      </div>
+      <div id="dropzone" class="dropzone">Перетащите сюда видео, фото или музыку</div>
+      <div id="upload-status" class="muted small"></div>
+      <ul id="media-list" class="media-list"></ul>
+    </section>
+
+    <section class="panel viewer">
+      <div class="stage" id="stage">
+        <video id="preview-video" playsinline></video>
+        <img id="preview-image" alt="" hidden>
+        <div id="preview-text" class="preview-text" hidden></div>
+        <div id="stage-empty" class="stage-empty">Добавьте клипы на таймлайн</div>
+      </div>
+      <div class="transport">
+        <button id="play-btn" title="Пробел">▶ Воспроизвести проект</button>
+        <button id="stop-btn">■ Стоп</button>
+        <span id="timecode" class="timecode">00:00.0 / 00:00.0</span>
+      </div>
+    </section>
+
+    <section class="panel inspector">
+      <h2>Клип</h2>
+      <div id="inspector-empty" class="muted">Выберите клип на таймлайне</div>
+      <form id="inspector" hidden>
+        <div class="field-name" id="clip-name"></div>
+        <div id="trim-fields">
+          <label>Начало, с <input type="number" id="clip-in" step="0.1" min="0"></label>
+          <label>Конец, с <input type="number" id="clip-out" step="0.1" min="0"></label>
+          <div class="row">
+            <button type="button" id="set-in">Начало = текущий кадр</button>
+            <button type="button" id="set-out">Конец = текущий кадр</button>
+          </div>
+        </div>
+        <label id="duration-field">Длительность фото, с <input type="number" id="clip-duration" step="0.5" min="0.5"></label>
+        <label>Титр <textarea id="clip-text" rows="2" placeholder="Текст поверх кадра"></textarea></label>
+        <label>Положение титра
+          <select id="clip-text-pos">
+            <option value="bottom">Снизу</option>
+            <option value="center">По центру</option>
+            <option value="top">Сверху</option>
+          </select>
+        </label>
+        <label>Появление (fade in), с <input type="number" id="clip-fade-in" step="0.1" min="0"></label>
+        <label>Исчезание (fade out), с <input type="number" id="clip-fade-out" step="0.1" min="0"></label>
+        <label>Громкость <input type="range" id="clip-volume" min="0" max="2" step="0.05"> <span id="clip-volume-val"></span></label>
+        <label class="check"><input type="checkbox" id="clip-muted"> Без звука</label>
+        <div class="row">
+          <button type="button" id="split-btn">✂ Разрезать по текущему кадру</button>
+          <button type="button" id="duplicate-btn">Дублировать</button>
+          <button type="button" id="remove-btn" class="danger">Удалить</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <section class="panel timeline-panel">
+    <div class="panel-head">
+      <h2>Таймлайн <span id="total-duration" class="muted"></span></h2>
+      <div class="row">
+        <label class="inline">Масштаб <input type="range" id="zoom" min="10" max="200" value="60"></label>
+      </div>
+    </div>
+    <div class="timeline-scroll">
+      <div id="ruler" class="ruler"></div>
+      <div id="track" class="track"></div>
+      <div id="music-track" class="track music"></div>
+    </div>
+  </section>
+
+  <dialog id="export-dialog">
+    <form method="dialog" class="export-form">
+      <h2>Экспорт</h2>
+      <label>Формат
+        <select id="export-resolution">
+          <option value="480p">16:9 — 480p</option>
+          <option value="720p">16:9 — 720p (HD)</option>
+          <option value="1080p">16:9 — 1080p (Full HD)</option>
+          <option value="vertical-720">9:16 — 720×1280 (Reels/Shorts)</option>
+          <option value="vertical-1080">9:16 — 1080×1920 (Reels/Shorts)</option>
+          <option value="square-1080">1:1 — 1080×1080</option>
+        </select>
+      </label>
+      <label>Кадров в секунду
+        <select id="export-fps">
+          <option value="24">24</option>
+          <option value="25">25</option>
+          <option value="30">30</option>
+          <option value="60">60</option>
+        </select>
+      </label>
+      <label>Фоновая музыка
+        <select id="export-music"><option value="">— нет —</option></select>
+      </label>
+      <label>Громкость музыки <input type="range" id="export-music-volume" min="0" max="1.5" step="0.05"> <span id="export-music-volume-val"></span></label>
+      <progress id="export-progress" max="1" value="0" hidden></progress>
+      <div id="export-status" class="muted"></div>
+      <a id="export-download" class="button primary" hidden download>Скачать MP4</a>
+      <div class="row end">
+        <button value="cancel">Закрыть</button>
+        <button id="export-start" value="default" class="primary">Собрать видео</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
