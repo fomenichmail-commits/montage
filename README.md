@@ -60,6 +60,13 @@ npm start
 | `MONTAGE_DATA_DIR` | `./data` | где хранятся загрузки, проект и готовые видео |
 | `MONTAGE_MAX_UPLOAD_MB` | `2048` | максимальный размер одного файла |
 
+## Remotion: видео из кода
+
+В папке [`remotion/`](remotion/) лежит проект [Remotion](https://www.remotion.dev): заставки и анимации пишутся на React и рендерятся в MP4.
+В репозитории также установлены официальные скиллы Remotion для Claude Code (`.claude/skills/`).
+Команды `/remotion-create`, `/remotion-markup`, `/remotion-render` работают сразу, как только вы откроете этот репозиторий в Claude Code.
+Подробности — в [remotion/README.md](remotion/README.md).
+
 ## Устройство
 
 ```
@@ -67,6 +74,8 @@ server/index.js    HTTP API: медиатека, проект, задачи ре
 server/ffmpeg.js   ffprobe, превью, сборка filter_complex для FFmpeg
 public/            интерфейс (HTML/CSS/JS без сборки)
 test/              тесты: генерируют клипы через FFmpeg и проверяют рендер
+remotion/          проект Remotion (видео из кода на React)
+.claude/skills/    скиллы Remotion для Claude Code
 data/              ваши файлы (не попадают в git)
 ```
 
