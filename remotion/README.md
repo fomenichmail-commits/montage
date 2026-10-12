@@ -38,3 +38,31 @@ npx remotion render Title out/my.mp4 --props='{"title":"Привет","subtitle"
 
 Бесплатно для частных лиц и компаний до 3 человек, дальше нужна
 [компанийная лицензия](https://www.remotion.pro/license).
+
+---
+
+# SportCardsSPB — оформление канала
+
+Стиль ТВ-трансляции: тёмно-синий фон с лучами прожекторов, красный, золотой и синий акценты, шрифты Oswald и Inter (лежат в `public/fonts/`, лицензия OFL). Звуковые эффекты в `public/sfx/` синтезированы кодом, поэтому проблем с правами нет.
+
+| Композиция | Что это | Длительность | Рендер |
+|---|---|---|---|
+| `SportCardsIntro` | Заставка: голо-карта, удар, название канала | 6 с | MP4 |
+| `CardInfo` | Плашка внизу кадра: игрок, сет, параллель, номер `/50` | 5 с | MOV с прозрачностью |
+| `Hit` | Вспышка «HIT!» для лучшей карты | 2.5 с | MOV с прозрачностью |
+| `Stinger` | Переход-шторка: монтажная склейка под 12-м кадром | 0.8 с | MOV с прозрачностью |
+| `EndScreen` | Финальная заставка с местами под конечные заставки YouTube | 10 с | MP4 |
+
+```bash
+B=--browser-executable=/путь/к/chrome   # только если нет интернета
+ALPHA="--image-format=png --pixel-format=yuva444p10le --codec=prores --prores-profile=4444"
+
+npx remotion render SportCardsIntro out/intro.mp4
+npx remotion render CardInfo out/card.mov $ALPHA \
+  --props='{"player":"Lamine Yamal","details":"Topps Chrome UCL 2025/26 • Gold Refractor","serial":"/50","tag":"CARD"}'
+npx remotion render Hit out/hit.mov $ALPHA --props='{"title":"HIT!","subtitle":"Автограф /25"}'
+npx remotion render Stinger out/stinger.mov $ALPHA
+npx remotion render EndScreen out/end.mp4
+```
+
+Тексты меняются через `--props` или прямо в Remotion Studio (`npm run dev`).
