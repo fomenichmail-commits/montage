@@ -19,8 +19,16 @@ export const TitleCard: React.FC<Props> = ({ title, subtitle, accent }) => {
   const scale = width / 1080;
 
   const enter = spring({ frame, fps, config: { damping: 200 } });
-  const lineWidth = spring({ frame: frame - 10, fps, config: { damping: 200 } });
-  const subtitleIn = spring({ frame: frame - 18, fps, config: { damping: 200 } });
+  const lineWidth = spring({
+    frame: frame - 10,
+    fps,
+    config: { damping: 200 },
+  });
+  const subtitleIn = spring({
+    frame: frame - 18,
+    fps,
+    config: { damping: 200 },
+  });
   const fadeOut = interpolate(
     frame,
     [durationInFrames - 15, durationInFrames],

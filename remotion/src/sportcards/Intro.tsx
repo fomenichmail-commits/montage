@@ -75,19 +75,16 @@ export const Intro: React.FC<Props> = ({ channel, city, tagline, theme }) => {
   const intro = interpolate(frame, [0, 14], [1, 2], {
     extrapolateRight: "clamp",
   });
-  const outro = interpolate(frame, [OUTRO, durationInFrames], [0, 1], {
+  const outro = interpolate(frame, [OUTRO, 180], [0, 1], {
     extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
   });
   const shake = useShake(IMPACT, 26);
 
   return (
     <AbsoluteFill style={{ backgroundColor: light ? "#f4f7fc" : colors.night }}>
       <AbsoluteFill style={{ transform: `${shake} scale(${push})` }}>
-        {light ? (
-          <LightBackground loop={durationInFrames} />
-        ) : (
-          <ArenaBackground />
-        )}
+        {light ? <LightBackground loop={180} /> : <ArenaBackground />}
 
         <AbsoluteFill
           style={{ justifyContent: "center", alignItems: "center" }}

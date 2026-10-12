@@ -19,6 +19,7 @@ type CardInfoProps = {
   readonly details: string;
   readonly serial: string;
   readonly tag: string;
+  readonly placement?: "top" | "bottom";
 };
 
 export const CardInfo: React.FC<CardInfoProps> = ({
@@ -26,6 +27,7 @@ export const CardInfo: React.FC<CardInfoProps> = ({
   details,
   serial,
   tag,
+  placement = "bottom",
 }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
@@ -50,7 +52,7 @@ export const CardInfo: React.FC<CardInfoProps> = ({
         style={{
           position: "absolute",
           left: 110,
-          bottom: 120,
+          ...(placement === "top" ? { top: 90 } : { bottom: 120 }),
           display: "flex",
           alignItems: "stretch",
         }}
@@ -253,10 +255,11 @@ export const Hit: React.FC<HitProps> = ({ title, subtitle }) => {
               style={{
                 fontFamily: displayFont,
                 fontWeight: 700,
-                fontSize: 190,
+                fontSize: 170,
                 lineHeight: 1,
                 color: colors.gold,
                 WebkitTextStroke: `6px ${colors.night}`,
+                paintOrder: "stroke",
                 textShadow: `8px 8px 0 ${colors.red}`,
                 textTransform: "uppercase",
               }}

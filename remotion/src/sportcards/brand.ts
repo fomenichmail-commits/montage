@@ -5,8 +5,18 @@ import { staticFile } from "remotion";
 export const displayFont = "Oswald";
 export const textFont = "Inter";
 
-loadFont({ family: displayFont, url: staticFile("fonts/Oswald.ttf"), weight: "200 700", format: "truetype" });
-loadFont({ family: textFont, url: staticFile("fonts/Inter.ttf"), weight: "100 900", format: "truetype" });
+loadFont({
+  family: displayFont,
+  url: staticFile("fonts/Oswald.ttf"),
+  weight: "200 700",
+  format: "truetype",
+});
+loadFont({
+  family: textFont,
+  url: staticFile("fonts/Inter.ttf"),
+  weight: "100 900",
+  format: "truetype",
+});
 
 export const colors = {
   night: "#050b1c",
