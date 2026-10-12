@@ -51,6 +51,8 @@ npx remotion render Title out/my.mp4 --props='{"title":"Привет","subtitle"
 | `CardInfo` | Плашка внизу кадра: игрок, сет, параллель, номер `/50` | 5 с | MOV с прозрачностью |
 | `Hit` | Вспышка «HIT!» для лучшей карты | 2.5 с | MOV с прозрачностью |
 | `Stinger` | Переход-шторка: монтажная склейка под 12-м кадром | 0.8 с | MOV с прозрачностью |
+| `SportCardsIntroLight` | Заставка в светлых тонах: поле, летающие голо-карты | 6 с | MP4, 4K через `--scale=2` |
+| `SportCardsBackdropLight` | Светлый фон без текста, бесшовно зацикливается | 10 с | MP4, 4K через `--scale=2` |
 | `EndScreen` | Финальная заставка с местами под конечные заставки YouTube | 10 с | MP4 |
 
 ```bash
@@ -63,6 +65,8 @@ npx remotion render CardInfo out/card.mov $ALPHA \
 npx remotion render Hit out/hit.mov $ALPHA --props='{"title":"HIT!","subtitle":"Автограф /25"}'
 npx remotion render Stinger out/stinger.mov $ALPHA
 npx remotion render EndScreen out/end.mp4
+npx remotion render SportCardsIntroLight out/intro-light-4k.mp4 --scale=2 --crf=14
+npx remotion render SportCardsBackdropLight out/backdrop-4k.mp4 --scale=2 --crf=14 --muted
 ```
 
 Тексты меняются через `--props` или прямо в Remotion Studio (`npm run dev`).

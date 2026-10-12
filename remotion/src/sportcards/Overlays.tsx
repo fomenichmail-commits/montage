@@ -21,19 +21,40 @@ type CardInfoProps = {
   readonly tag: string;
 };
 
-export const CardInfo: React.FC<CardInfoProps> = ({ player, details, serial, tag }) => {
+export const CardInfo: React.FC<CardInfoProps> = ({
+  player,
+  details,
+  serial,
+  tag,
+}) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
   const enter = spring({ frame, fps, config: { damping: 18 } });
-  const exit = spring({ frame: frame - (durationInFrames - 18), fps, config: { damping: 18 } });
+  const exit = spring({
+    frame: frame - (durationInFrames - 18),
+    fps,
+    config: { damping: 18 },
+  });
   const open = enter - exit;
-  const textIn = spring({ frame: frame - 8, fps, config: { damping: 16 } }) - exit;
+  const textIn =
+    spring({ frame: frame - 8, fps, config: { damping: 16 } }) - exit;
   const badge = usePop(16, 9);
-  const sweep = interpolate(frame, [26, 50], [-30, 130], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const sweep = interpolate(frame, [26, 50], [-30, 130], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
 
   return (
     <AbsoluteFill>
-      <div style={{ position: "absolute", left: 110, bottom: 120, display: "flex", alignItems: "stretch" }}>
+      <div
+        style={{
+          position: "absolute",
+          left: 110,
+          bottom: 120,
+          display: "flex",
+          alignItems: "stretch",
+        }}
+      >
         <div
           style={{
             background: colors.red,
@@ -63,7 +84,13 @@ export const CardInfo: React.FC<CardInfoProps> = ({ player, details, serial, tag
             transformOrigin: "left",
           }}
         >
-          <div style={{ transform: "skewX(12deg)", opacity: textIn, translate: `0 ${(1 - textIn) * 30}px` }}>
+          <div
+            style={{
+              transform: "skewX(12deg)",
+              opacity: textIn,
+              translate: `0 ${(1 - textIn) * 30}px`,
+            }}
+          >
             <div
               style={{
                 fontFamily: displayFont,
@@ -77,7 +104,15 @@ export const CardInfo: React.FC<CardInfoProps> = ({ player, details, serial, tag
             >
               {player}
             </div>
-            <div style={{ fontFamily: textFont, fontWeight: 500, fontSize: 30, color: colors.mist, marginTop: 4 }}>
+            <div
+              style={{
+                fontFamily: textFont,
+                fontWeight: 500,
+                fontSize: 30,
+                color: colors.mist,
+                marginTop: 4,
+              }}
+            >
               {details}
             </div>
           </div>
@@ -88,7 +123,8 @@ export const CardInfo: React.FC<CardInfoProps> = ({ player, details, serial, tag
               bottom: 0,
               left: `${sweep}%`,
               width: 140,
-              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent)",
+              background:
+                "linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent)",
             }}
           />
         </div>
@@ -129,7 +165,13 @@ export const Stinger: React.FC = () => {
     <AbsoluteFill>
       <StripeWipe progress={progress} />
       <AbsoluteFill style={{ justifyContent: "center", alignItems: "center" }}>
-        <div style={{ opacity: interpolate(Math.abs(progress - 1), [0, 0.25], [1, 0], { extrapolateRight: "clamp" }) }}>
+        <div
+          style={{
+            opacity: interpolate(Math.abs(progress - 1), [0, 0.25], [1, 0], {
+              extrapolateRight: "clamp",
+            }),
+          }}
+        >
           <Ball size={180} spin={frame * 12} />
         </div>
       </AbsoluteFill>
@@ -150,16 +192,30 @@ export const Hit: React.FC<HitProps> = ({ title, subtitle }) => {
   const { durationInFrames } = useVideoConfig();
   const pop = usePop(0, 7);
   const sub = usePop(10, 12);
-  const out = interpolate(frame, [durationInFrames - 10, durationInFrames], [1, 0], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
+  const out = interpolate(
+    frame,
+    [durationInFrames - 10, durationInFrames],
+    [1, 0],
+    {
+      extrapolateLeft: "clamp",
+      extrapolateRight: "clamp",
+    },
+  );
   const rays = Array.from({ length: 16 }, (_, i) => i);
 
   return (
     <AbsoluteFill style={{ opacity: out }}>
       <AbsoluteFill style={{ alignItems: "center", top: 70 }}>
-        <div style={{ position: "relative", width: 900, height: 360, display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <div
+          style={{
+            position: "relative",
+            width: 900,
+            height: 360,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
           <div
             style={{
               position: "absolute",
@@ -187,7 +243,12 @@ export const Hit: React.FC<HitProps> = ({ title, subtitle }) => {
               />
             ))}
           </div>
-          <div style={{ textAlign: "center", transform: `scale(${pop}) rotate(-4deg)` }}>
+          <div
+            style={{
+              textAlign: "center",
+              transform: `scale(${pop}) rotate(-4deg)`,
+            }}
+          >
             <div
               style={{
                 fontFamily: displayFont,
@@ -268,8 +329,23 @@ export const EndScreen: React.FC<EndProps> = ({ channel, city, cta }) => {
     <AbsoluteFill>
       <ArenaBackground />
       <AbsoluteFill style={{ alignItems: "center", paddingTop: 70 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 22, transform: `scale(${title})` }}>
-          <div style={{ fontFamily: displayFont, fontWeight: 700, fontSize: 96, color: colors.white, textTransform: "uppercase" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 22,
+            transform: `scale(${title})`,
+          }}
+        >
+          <div
+            style={{
+              fontFamily: displayFont,
+              fontWeight: 700,
+              fontSize: 96,
+              color: colors.white,
+              textTransform: "uppercase",
+            }}
+          >
             {channel}
           </div>
           <div
@@ -328,7 +404,14 @@ export const OverlayCompositions = () => {
           tag: "CARD",
         }}
       />
-      <Composition id="Stinger" component={Stinger} durationInFrames={24} fps={30} width={1920} height={1080} />
+      <Composition
+        id="Stinger"
+        component={Stinger}
+        durationInFrames={24}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
       <Composition
         id="Hit"
         component={Hit}
