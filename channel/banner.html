@@ -1,0 +1,23 @@
+<html><head><link rel="stylesheet" href="common.css"><style>
+body{width:2560px;height:1440px;overflow:hidden;position:relative;background:var(--paper);font-family:Inter}
+.grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 2px,transparent 2px),linear-gradient(90deg,var(--line) 2px,transparent 2px);background-size:80px 80px;opacity:.6}
+.glow{position:absolute;inset:0;background:radial-gradient(60% 45% at 50% 50%,#ffffff 0%,rgba(255,255,255,0) 70%)}
+.stripe{position:absolute;left:0;right:0;top:948px;height:10px;background:var(--gold)}
+.stripe.n{top:962px;height:4px;background:var(--navy)}
+.safe{position:absolute;left:507px;top:508px;width:1546px;height:423px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+.lock{display:flex;align-items:center;gap:30px}
+.name{font-family:Oswald;font-weight:700;font-size:176px;line-height:.9;color:var(--navy);text-shadow:12px 12px 0 var(--gold);letter-spacing:2px}
+.city{font-family:Oswald;font-weight:700;font-size:124px;line-height:1.15;color:#fff;background:var(--red);padding:0 40px;transform:skewX(-12deg)}
+.tag{white-space:nowrap;font-family:Inter;font-weight:700;font-size:40px;letter-spacing:8px;color:var(--slate);text-transform:uppercase}
+.tag b{color:var(--navy)}
+</style></head><body>
+<div class="grid"></div><div class="glow"></div><div class="stripe"></div><div class="stripe n"></div><div class="stripe" style="top:482px"></div><div class="stripe n" style="top:474px"></div>
+<div class="card" style="left:40px;top:520px;transform:rotate(-14deg)"><div class="in"><div class="ball"></div><div class="bar"></div></div></div>
+<div class="card gold" style="left:175px;top:470px;transform:rotate(-4deg)"><div class="in"><div class="ball"></div><div class="bar"></div></div></div>
+<div class="card" style="right:175px;top:470px;transform:rotate(5deg)"><div class="in"><div class="ball"></div><div class="bar"></div></div></div>
+<div class="card gold" style="right:40px;top:530px;transform:rotate(15deg)"><div class="in"><div class="ball"></div><div class="bar"></div></div></div>
+<div class="safe">
+ <div class="lock"><span class="name">SPORTCARDS</span><span class="city">SPB</span></div>
+ <div class="tag"><b>Panini</b> • <b>Topps</b> • футбольные карточки</div>
+</div>
+</body></html>
