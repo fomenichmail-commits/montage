@@ -225,7 +225,7 @@ const Stars: React.FC<{ readonly n: number; readonly size: number }> = ({
   </div>
 );
 
-const LightCardInfo: React.FC<{
+export const LightCardInfo: React.FC<{
   readonly player: string;
   readonly details: string;
 }> = ({ player, details }) => {
@@ -282,7 +282,9 @@ const LightCardInfo: React.FC<{
   );
 };
 
-const RarityBadge: React.FC<{ readonly rarity: string }> = ({ rarity }) => {
+export const RarityBadge: React.FC<{ readonly rarity: string }> = ({
+  rarity,
+}) => {
   const frame = useCurrentFrame();
   const { durationInFrames } = useVideoConfig();
   const pop = spring({ frame, fps: FPS, config: { damping: 10 } });
@@ -344,7 +346,7 @@ const RarityBadge: React.FC<{ readonly rarity: string }> = ({ rarity }) => {
   );
 };
 
-const LightOutro: React.FC = () => {
+export const LightOutro: React.FC = () => {
   const frame = useCurrentFrame();
   const pop = spring({ frame: frame - 4, fps: FPS, config: { damping: 14 } });
   return (
@@ -608,7 +610,7 @@ export const Sample: React.FC<Props> = (p) => {
   );
 };
 
-const FadeIn: React.FC<{
+export const FadeIn: React.FC<{
   readonly frames: number;
   readonly children: React.ReactNode;
 }> = ({ frames, children }) => {
