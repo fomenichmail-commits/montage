@@ -1,0 +1,393 @@
+<title>SportCardsSPB Брендбук монтажа</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: светлый "лист монтажёра" — левая колонка с разделами, справа живые копии графики в кадре 16:9.
+   Тема одна (светлый премиум канала) — выбрана сознательно. */
+:root {
+  --paper: #f4f7fc;
+  --card: #ffffff;
+  --navy: #0b1d45;
+  --slate: #4a5a7a;
+  --mist: #b8c4e0;
+  --line: #dbe3f1;
+  --gold: #ffc629;
+  --red: #e3172d;
+  --blue: #1f6fff;
+  --display: "Oswald", "Arial Narrow", Impact, sans-serif;
+  --text: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--navy); font-family: var(--text); font-size: 16px; line-height: 1.55; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 20px; padding-block: 40px 80px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; margin: 0; line-height: 1.05; }
+h2 { font-size: 34px; }
+h3 { font-size: 20px; letter-spacing: .03em; }
+p { margin: 0; max-width: 65ch; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--slate); }
+code, .mono { font-family: var(--mono); font-size: 13px; }
+.tab { font-variant-numeric: tabular-nums; }
+
+/* header */
+header.top { display: grid; gap: 22px; padding-bottom: 36px; border-bottom: 2px solid var(--navy); }
+.lockup { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.lockup .name { font-family: var(--display); font-weight: 700; font-size: clamp(48px, 9vw, 96px); line-height: .95; color: var(--navy); text-shadow: 5px 5px 0 var(--gold); }
+.lockup .city { font-family: var(--display); font-weight: 700; font-size: clamp(36px, 6.5vw, 70px); line-height: 1.1; color: #fff; background: var(--red); padding: 0 20px; transform: skewX(-12deg); }
+.lede { font-size: 18px; color: var(--slate); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 12px; font-size: 13px; font-weight: 600; }
+
+nav.toc { display: flex; flex-wrap: wrap; gap: 6px 18px; padding-block: 18px; border-bottom: 1px solid var(--line); font-size: 14px; font-weight: 600; }
+nav.toc a { color: var(--navy); text-decoration: none; border-bottom: 2px solid transparent; }
+nav.toc a:hover, nav.toc a:focus-visible { border-bottom-color: var(--gold); outline: none; }
+
+section { padding-block: 56px 8px; display: grid; gap: 24px; }
+.sec-head { display: grid; gap: 8px; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.grid2 > * { min-width: 0; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 12px; align-content: start; }
+ul.rules { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+ul.rules li::marker { color: var(--red); }
+
+/* colors */
+.swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+.sw { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.sw .chipc { height: 92px; }
+.sw .meta { padding: 10px 12px 12px; display: grid; gap: 2px; }
+.sw b { font-size: 14px; }
+.sw span { font-size: 12.5px; color: var(--slate); }
+
+/* type */
+.specimen { display: grid; gap: 4px; }
+.specimen .big { font-family: var(--display); font-weight: 700; font-size: 56px; text-transform: uppercase; line-height: 1; }
+.specimen .body { font-family: var(--text); font-weight: 600; font-size: 24px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); }
+.scroll { overflow-x: auto; }
+
+/* 16:9 frame mock — 1920x1080 scaled by container width */
+.frame { position: relative; width: 100%; max-width: 100%; aspect-ratio: 16 / 9; border-radius: 10px; overflow: hidden; container-type: inline-size;
+  background:
+    radial-gradient(120% 90% at 30% 40%, #8796b4 0%, #5d6c8c 45%, #3b4865 100%); }
+.frame .person { position: absolute; left: 50%; bottom: 0; width: 34cqw; height: 74cqw; transform: translateX(-50%); }
+.frame .person::before { content: ""; position: absolute; left: 50%; top: 4cqw; width: 12cqw; height: 15cqw; transform: translateX(-50%); border-radius: 50%; background: #2c3854; }
+.frame .person::after { content: ""; position: absolute; left: 0; right: 0; top: 19cqw; bottom: 0; border-radius: 14cqw 14cqw 0 0; background: #263049; }
+.safe { position: absolute; inset: 5% 5%; border: 1px dashed rgba(255,255,255,.55); border-radius: 4px; pointer-events: none; }
+.safe-label { position: absolute; right: 5.6%; bottom: 5.8%; font-family: var(--mono); font-size: 1.1cqw; color: rgba(255,255,255,.8); }
+
+/* plate (LightCardInfo) — px values from code ×(100/1920) as cqw */
+.plate { position: absolute; left: 4.69cqw; top: 4.17cqw; background: rgba(255,255,255,.94); border-left: .42cqw solid var(--gold); border-radius: .52cqw; padding: .94cqw 1.77cqw; box-shadow: 0 .73cqw 2.08cqw rgba(11,29,69,.2); }
+.plate .p { font-family: var(--display); font-weight: 700; font-size: 2.92cqw; text-transform: uppercase; color: var(--navy); line-height: 1.2; }
+.plate .d { font-family: var(--text); font-weight: 500; font-size: 1.46cqw; color: var(--slate); }
+/* rarity badge */
+.badge { position: absolute; right: 4.69cqw; top: 4.17cqw; border-radius: 999px; padding: .83cqw 1.88cqw; display: flex; gap: 1.04cqw; align-items: center; overflow: hidden;
+  background: linear-gradient(135deg, var(--gold), #fff3c4 50%, #e7b400); box-shadow: 0 .73cqw 2.08cqw rgba(180,130,0,.35); }
+.badge .r { font-family: var(--display); font-weight: 700; font-size: 2.5cqw; color: var(--navy); text-transform: uppercase; line-height: 1.2; }
+.badge .stars { font-size: 1.7cqw; color: var(--navy); letter-spacing: .1em; }
+.badge::after { content: ""; position: absolute; top: 0; bottom: 0; width: 6cqw; left: -10cqw; background: linear-gradient(90deg, transparent, rgba(255,255,255,.8), transparent); animation: sweep 3.2s ease-in-out infinite; }
+@keyframes sweep { 0%, 35% { left: -10cqw; } 70%, 100% { left: 110%; } }
+/* captions */
+.cap { position: absolute; left: 50%; bottom: 3.65cqw; transform: translateX(-50%); background: rgba(255,255,255,.92); color: var(--navy); font-family: var(--text); font-weight: 600; font-size: 2.29cqw; padding: .63cqw 1.56cqw; border-radius: .73cqw; box-shadow: 0 .52cqw 1.56cqw rgba(11,29,69,.18); white-space: nowrap; }
+/* outro */
+.frame.outro { background: radial-gradient(90% 90% at 50% 45%, #ffffff 0%, #eef3fb 55%, #dde6f5 100%); display: grid; place-content: center; justify-items: center; gap: 1cqw; }
+.frame.outro .row { display: flex; align-items: center; gap: 1.15cqw; }
+.frame.outro .n { font-family: var(--display); font-weight: 700; font-size: 5.73cqw; color: var(--navy); text-shadow: .31cqw .31cqw 0 var(--gold); }
+.frame.outro .c { font-family: var(--display); font-weight: 700; font-size: 4.17cqw; color: #fff; background: var(--red); padding: 0 1.25cqw; transform: skewX(-12deg); }
+.frame.outro .cta { font-family: var(--text); font-weight: 700; font-size: 1.88cqw; letter-spacing: .21cqw; color: var(--slate); text-transform: uppercase; }
+.bug { position: absolute; right: 3.13cqw; top: 2.6cqw; display: flex; opacity: .92; }
+.bug span { font-family: var(--display); font-weight: 700; font-size: 1.56cqw; color: #fff; padding: .2cqw .73cqw; }
+
+.legend { display: grid; gap: 6px; font-size: 14px; color: var(--slate); }
+.legend b { color: var(--navy); }
+
+/* timeline */
+.timeline { display: flex; height: 46px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); min-width: 640px; }
+.timeline div { display: grid; place-items: center; font-size: 12px; font-weight: 700; color: var(--navy); border-right: 1px solid rgba(11,29,69,.12); padding-inline: 4px; text-align: center; line-height: 1.15; }
+.t-intro { background: var(--gold); flex: 6; }
+.t-body { background: #e3eaf7; flex: 60; }
+.t-xf { background: linear-gradient(90deg, #e3eaf7, #fff); flex: .3; }
+.t-outro { background: var(--card); flex: 3; }
+
+.do-dont { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.do-dont .panel { border-top: 4px solid var(--blue); }
+.do-dont .panel.no { border-top-color: var(--red); }
+
+.check { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.check li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+.check li::before { content: ""; width: 18px; height: 18px; margin-top: 3px; border: 2px solid var(--navy); border-radius: 4px; }
+
+footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 13px; color: var(--slate); display: grid; gap: 6px; }
+a { color: var(--blue); }
+@media (prefers-reduced-motion: reduce) { .badge::after { animation: none; display: none; } }
+@media (max-width: 520px) { h2 { font-size: 28px; } .specimen .big { font-size: 40px; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <span class="eyebrow">Брендбук монтажа · стиль «Светлый премиум» · версия 1.0, октябрь 2026</span>
+    <div class="lockup"><span class="name">SPORTCARDS</span><span class="city">SPB</span></div>
+    <p class="lede">Правила, по которым собираются ролики канала про карточки Panini и Topps: цвета, шрифты, графика в кадре, ритм монтажа, звук и экспорт. Все значения взяты из готового эпизода Match Attax 2026/27 и кода шаблона в Remotion.</p>
+    <div class="facts">
+      <span class="chip">YouTube 16:9</span><span class="chip tab">1920×1080 · 30 fps</span><span class="chip">Футбол</span><span class="chip tab">−14 LUFS</span><span class="chip">Заставка 4K</span>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="Разделы">
+    <a href="#logo">Логотип</a><a href="#color">Цвета</a><a href="#type">Шрифты</a><a href="#onscreen">Графика в кадре</a><a href="#structure">Структура ролика</a><a href="#edit">Монтаж</a><a href="#captions">Субтитры</a><a href="#sound">Звук</a><a href="#export">Экспорт</a><a href="#check">Чек-лист</a>
+  </nav>
+
+  <section id="logo">
+    <div class="sec-head"><span class="eyebrow">Логотип</span><h2>Знак канала</h2></div>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Состав</h3>
+        <ul class="rules">
+          <li><b>SPORTCARDS</b>: Oswald Bold, капс, тёмно-синий, жёлтая тень со сдвигом вправо-вниз.</li>
+          <li><b>SPB</b>: белый текст на красной плашке с наклоном −12°. Плашка всегда справа от слова.</li>
+          <li>Расстояние между словом и плашкой равно ширине буквы «S».</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Где появляется</h3>
+        <ul class="rules">
+          <li>Заставка: 6 секунд, светлый фон с карточками.</li>
+          <li>Концовка: логотип и «Подписывайся на канал», 3 секунды.</li>
+          <li>Угловой логотип (стиль «Трансляция»): справа вверху, прозрачность 92%.</li>
+          <li>Не меняйте цвета, не убирайте наклон плашки и не ставьте логотип на пёстрый фон без подложки.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="color">
+    <div class="sec-head"><span class="eyebrow">Цвета</span><h2>Палитра</h2><p>Основа светлая и холодная, жёлтый работает как «золото» карточки. Красный остаётся только в знаке SPB, в графику роликов его не переносим.</p></div>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#0b1d45"></div><div class="meta"><b>Navy</b><span class="mono">#0B1D45</span><span>Текст, имена игроков</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#ffc629"></div><div class="meta"><b>Gold</b><span class="mono">#FFC629</span><span>Акцент, бейджи редкости</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#e3172d"></div><div class="meta"><b>Red</b><span class="mono">#E3172D</span><span>Только плашка SPB</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#f4f7fc;border-bottom:1px solid #dbe3f1"></div><div class="meta"><b>Paper</b><span class="mono">#F4F7FC</span><span>Фон заставки и концовки</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#4a5a7a"></div><div class="meta"><b>Slate</b><span class="mono">#4A5A7A</span><span>Подписи, вторая строка</span></div></div>
+      <div class="sw"><div class="chipc" style="background:#ffffff;border-bottom:1px solid #dbe3f1"></div><div class="meta"><b>White 92–94%</b><span class="mono">rgba(255,255,255,.92)</span><span>Подложки субтитров и плашек</span></div></div>
+      <div class="sw"><div class="chipc" style="background:linear-gradient(135deg,#ffc629,#fff3c4 50%,#e7b400)"></div><div class="meta"><b>Gold foil</b><span class="mono">#FFC629 → #FFF3C4 → #E7B400</span><span>Градиент бейджа</span></div></div>
+      <div class="sw"><div class="chipc" style="background:conic-gradient(from 30deg,#7af0ff,#b18cff,#ff8ad8,#ffe17a,#8affb2,#7af0ff)"></div><div class="meta"><b>Holo</b><span class="mono">conic, 6 цветов</span><span>Отблеск карточек в заставке</span></div></div>
+    </div>
+  </section>
+
+  <section id="type">
+    <div class="sec-head"><span class="eyebrow">Шрифты</span><h2>Типографика</h2><p>Два шрифта, оба под лицензией OFL и лежат в проекте (<code>remotion/public/fonts</code>), поэтому рендер не зависит от интернета.</p></div>
+    <div class="grid2">
+      <div class="panel specimen"><span class="eyebrow">Заголовки · Oswald Bold, капс</span><span class="big">Viktor Gyökeres</span><span class="mono" style="color:var(--slate)">Имена, бейджи, логотип</span></div>
+      <div class="panel specimen"><span class="eyebrow">Текст · Inter 500–700</span><span class="body">Slick • Arsenal, супер-рар из кейса</span><span class="mono" style="color:var(--slate)">Субтитры, подписи, призыв</span></div>
+    </div>
+    <div class="scroll">
+      <table class="tab">
+        <thead><tr><th>Элемент</th><th>Шрифт</th><th>Кегль в 1080p</th><th>Цвет</th></tr></thead>
+        <tbody>
+          <tr><td>Логотип в концовке</td><td>Oswald 700</td><td>110 / 80 px</td><td>Navy / белый на Red</td></tr>
+          <tr><td>Имя игрока на плашке</td><td>Oswald 700, капс</td><td>56 px</td><td>Navy</td></tr>
+          <tr><td>Серия и клуб</td><td>Inter 500</td><td>28 px</td><td>Slate</td></tr>
+          <tr><td>Бейдж редкости</td><td>Oswald 700, капс</td><td>48 px</td><td>Navy на Gold foil</td></tr>
+          <tr><td>Субтитры</td><td>Inter 600</td><td>44 px</td><td>Navy на белом 92%</td></tr>
+          <tr><td>Призыв в концовке</td><td>Inter 700, капс, трекинг 4 px</td><td>36 px</td><td>Slate</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="onscreen">
+    <div class="sec-head"><span class="eyebrow">Графика в кадре</span><h2>Плашка, бейдж, субтитры</h2><p>Макет ниже в точных пропорциях кадра 1920×1080. Пунктир показывает безопасную зону (5% от края): ничего важного за ней не ставим.</p></div>
+    <div class="frame" role="img" aria-label="Кадр с плашкой игрока слева вверху, бейджем редкости справа вверху и субтитрами внизу">
+      <div class="person"></div>
+      <div class="safe"></div><span class="safe-label">safe 5%</span>
+      <div class="plate"><div class="p">Viktor Gyökeres</div><div class="d">Slick • Arsenal</div></div>
+      <div class="badge"><span class="r">Super Rare</span><span class="stars">★★★★★</span></div>
+      <div class="cap">Это супер-рар, и он мне попался</div>
+    </div>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Плашка игрока</h3>
+        <div class="legend">
+          <span><b>Место:</b> слева вверху, отступ 90 px слева и 80 px сверху.</span>
+          <span><b>Форма:</b> белая подложка 94%, жёлтая полоса 8 px слева, скругление 10 px, мягкая синяя тень.</span>
+          <span><b>Текст:</b> имя игрока латиницей, как на карточке; ниже серия и клуб через «•».</span>
+          <span><b>Движение:</b> выезжает слева на 60 px с проявлением (spring, damping 20), уходит так же за 15 кадров.</span>
+          <span><b>Время:</b> до 5 с; если следующий игрок раньше, плашка уходит за 6 кадров до него, но держится минимум 1,5 с.</span>
+          <span><b>Звук:</b> whoosh, громкость 0,35.</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Бейдж редкости</h3>
+        <div class="legend">
+          <span><b>Место:</b> справа вверху, зеркально плашке.</span>
+          <span><b>Форма:</b> капсула с золотым градиентом, 5 звёзд, по ней проходит блик.</span>
+          <span><b>Когда:</b> только на настоящих хитах: Hyper Rare, Super Rare, Case Hit, Black Nitro. Не чаще одного раза в 1–2 минуты.</span>
+          <span><b>Движение:</b> «выпрыгивает» с пружиной (damping 10), гаснет за 12 кадров. Длительность 4 с.</span>
+          <span><b>Звук:</b> shimmer, полная громкость.</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="frame outro" role="img" aria-label="Концовка: логотип SportCards SPB и призыв подписаться">
+        <div class="row"><span class="n">SPORTCARDS</span><span class="c">SPB</span></div>
+        <span class="cta">Подписывайся на канал</span>
+      </div>
+      <div class="panel">
+        <h3>Концовка и заставка</h3>
+        <div class="legend">
+          <span><b>Заставка:</b> 6 с (180 кадров), светлый фон Paper, карточки с голографическим отблеском, логотип и строка «Panini • Topps • Футбол». Есть мастер в 4K и отдельный фон-задник.</span>
+          <span><b>Концовка:</b> 3 с, логотип выскакивает с пружиной, под ним призыв. Вход через наплыв 8 кадров.</span>
+          <span><b>Для конечных заставок YouTube</b> (стиль «Трансляция») — экран 10 с с двумя пустыми слотами под «Следующее видео» и «Лучшее на канале».</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="structure">
+    <div class="sec-head"><span class="eyebrow">Структура ролика</span><h2>Таймлайн эпизода</h2><p>Эпизод Match Attax 2026/27: 14 минут 1 секунда. Пропорции полосы ниже условные.</p></div>
+    <div class="scroll">
+      <div class="timeline" role="img" aria-label="Заставка 6 секунд, основная часть 13 минут 52 секунды, наплыв 8 кадров, концовка 3 секунды">
+        <div class="t-intro">Заставка<br>6 с</div>
+        <div class="t-body">Распаковка и обзор карточек · 13:52 · плашки и бейджи по ходу</div>
+        <div class="t-xf"></div>
+        <div class="t-outro">Концовка<br>3 с</div>
+      </div>
+    </div>
+    <div class="scroll">
+      <table class="tab">
+        <thead><tr><th>Блок</th><th>Кадры (30 fps)</th><th>Секунды</th></tr></thead>
+        <tbody>
+          <tr><td>Заставка</td><td>180</td><td>6,0</td></tr>
+          <tr><td>Плашка игрока</td><td>45–150</td><td>1,5–5,0</td></tr>
+          <tr><td>Бейдж редкости</td><td>120</td><td>4,0</td></tr>
+          <tr><td>Наплыв в концовку</td><td>8</td><td>0,27</td></tr>
+          <tr><td>Концовка</td><td>90</td><td>3,0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="edit">
+    <div class="sec-head"><span class="eyebrow">Монтаж</span><h2>Ритм и склейки</h2><p>Говорящая голова плюс карточки в руках. Задача монтажа — убрать паузы и повторы так, чтобы речь шла плотно, но не рвано.</p></div>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Что вырезаем</h3>
+        <ul class="rules">
+          <li>Паузы длиннее 0,6 с между фразами.</li>
+          <li>Фальстарты и повторённые дубли: оставляем последний удачный.</li>
+          <li>Оговорки, которые автор сам исправляет («нет, я вас обманул… это не оно»).</li>
+          <li>Служебные реплики не для зрителя («так, надо сфокусироваться»).</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Как режем</h3>
+        <ul class="rules">
+          <li>Запас 0,15 с до первого слова и 0,3 с после последнего, чтобы не съедать звуки.</li>
+          <li>Склейки по сетке кадров 30 fps: звук и картинка не расходятся.</li>
+          <li>Каждую склейку маскируем сменой масштаба: 100% и 106% по очереди.</li>
+          <li>Внутри куска лёгкий наезд +2%, чтобы статичный план «дышал».</li>
+          <li>Не правим смысл речи и не склеиваем слова из разных фраз.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="do-dont">
+      <div class="panel"><span class="eyebrow">Так</span><p>Одна плашка на одного игрока, в момент, когда карточку показывают в кадр. Бейдж — только когда автор сам называет редкость.</p></div>
+      <div class="panel no"><span class="eyebrow">Не так</span><p>Плашка и бейдж поверх лица, несколько плашек подряд без паузы, бейдж на каждой базовой карточке, красный цвет в графике.</p></div>
+    </div>
+  </section>
+
+  <section id="captions">
+    <div class="sec-head"><span class="eyebrow">Субтитры</span><h2>Правила субтитров</h2></div>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Вёрстка</h3>
+        <ul class="rules">
+          <li>Внизу по центру, 70 px от нижнего края, белая подложка 92%, скругление 14 px.</li>
+          <li>Не больше 6 слов в строке, одна строка на экране.</li>
+          <li>Новая строка после точки, вопроса, многоточия, после запятой (если набралось 3+ слова) и после паузы длиннее 0,7 с.</li>
+          <li>Во время долгой паузы субтитр убираем, не держим на экране.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Правописание</h3>
+        <ul class="rules">
+          <li>Имена игроков по-русски в принятом написании: Дьёкереш, Эберечи Эзе, Пулишич, Дембеле, Мбаппе, Ле Норман.</li>
+          <li>На плашках имена латиницей, как на карточке: Viktor Gyökeres, Ousmane Dembélé.</li>
+          <li>Названия параллелей как у производителя: Slick, Black Nitro, Hyper Rare, BN1.</li>
+          <li>Жаргон коллекционеров: хиропак, кейс-хит, супер-рар, УФ-лак, стартер-пак.</li>
+          <li>Цифры проверяем по карточке (в эпизоде 2026/27 исправлено «68» на «67»).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="sound">
+    <div class="sec-head"><span class="eyebrow">Звук</span><h2>Голос и эффекты</h2></div>
+    <div class="grid2">
+      <div class="panel">
+        <h3>Обработка голоса</h3>
+        <ul class="rules">
+          <li>Срез низа 80 Гц, лёгкое шумоподавление (afftdn −28 дБ).</li>
+          <li>Компрессор: порог −20 дБ, соотношение 2,5:1, атака 10 мс, восстановление 150 мс.</li>
+          <li>Итоговая громкость −14 LUFS, пики не выше −1,5 dBTP (двухпроходный loudnorm).</li>
+          <li>Стерео, 48 кГц, AAC 192 кбит/с.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Звуковые эффекты</h3>
+        <div class="scroll">
+          <table>
+            <thead><tr><th>Файл</th><th>Когда</th><th>Громкость</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">whoosh.wav</td><td>Выезд плашки, переходы</td><td class="tab">0,35–0,6</td></tr>
+              <tr><td class="mono">shimmer.wav</td><td>Бейдж редкости</td><td class="tab">1,0</td></tr>
+              <tr><td class="mono">impact.wav</td><td>Удар в заставке, «HIT!»</td><td class="tab">1,0</td></tr>
+              <tr><td class="mono">riser.wav</td><td>Разгон перед логотипом</td><td class="tab">1,0</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="export">
+    <div class="sec-head"><span class="eyebrow">Экспорт</span><h2>Настройки файлов</h2></div>
+    <div class="scroll">
+      <table class="tab">
+        <thead><tr><th>Файл</th><th>Видео</th><th>Звук</th><th>Размер эпизода 14 мин</th></tr></thead>
+        <tbody>
+          <tr><td>Мастер (архив)</td><td>H.264, 1920×1080, 30 fps, CRF 18</td><td>AAC 192k, −14 LUFS</td><td>≈ 925 МБ</td></tr>
+          <tr><td>Для YouTube</td><td>H.264, CRF 20, максимум 4,3 Мбит/с, faststart</td><td>AAC 192k</td><td>≈ 470 МБ</td></tr>
+          <tr><td>Заставка 4K</td><td>3840×2160 (рендер со scale 2)</td><td>с эффектами</td><td>—</td></tr>
+          <tr><td>Графика с альфой</td><td>ProRes 4444, прозрачный фон</td><td>—</td><td>для CapCut / DaVinci</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Имя файла: <code>SportCardsSPB-&lt;серия&gt;-&lt;сезон&gt;-youtube.mp4</code>, например <code>SportCardsSPB-MatchAttax-2026-27-youtube.mp4</code>.</p>
+  </section>
+
+  <section id="check">
+    <div class="sec-head"><span class="eyebrow">Перед публикацией</span><h2>Чек-лист</h2></div>
+    <div class="grid2">
+      <ul class="check panel">
+        <li>Заставка 6 с в начале, концовка 3 с в конце.</li>
+        <li>Нет пауз длиннее 0,6 с и повторённых дублей.</li>
+        <li>На каждой склейке меняется масштаб.</li>
+        <li>У каждого показанного игрока есть плашка, имена написаны верно.</li>
+      </ul>
+      <ul class="check panel">
+        <li>Бейджи только на настоящих хитах.</li>
+        <li>Субтитры не длиннее 6 слов, цифры сверены с карточками.</li>
+        <li>Громкость −14 LUFS, пики не выше −1,5 dBTP.</li>
+        <li>Файл 1920×1080, 30 fps, проверены начало, середина и конец.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>Исходники: репозиторий <span class="mono">fomenichmail-commits/montage</span>, папка <span class="mono">remotion/src/sportcards</span> (brand.ts, Samples.tsx, FullLight.tsx). Цвета и размеры в коде совпадают с этой страницей.</span>
+    <span>Альтернативные стили, сделанные в образцах: «Трансляция» (тёмно-синий, угловой логотип, шторки-переходы) и «Энергия» (быстрый ритм, крупные субтитры).</span>
+  </footer>
+</div>
