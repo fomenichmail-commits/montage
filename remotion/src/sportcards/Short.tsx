@@ -26,6 +26,8 @@ type Props = {
   readonly words: Word[];
   readonly plates: Mark[];
   readonly badges: Mark[];
+  /** Horizontal crop of the 16:9 source in px (420 = centered). */
+  readonly cropX?: number;
 };
 
 const FPS = 30;
@@ -255,7 +257,15 @@ const Captions: React.FC<{ readonly words: Word[] }> = ({ words }) => {
   );
 };
 
-export const Short: React.FC<Props> = ({ master, title, segments, words, plates, badges }) => {
+export const Short: React.FC<Props> = ({
+  master,
+  title,
+  segments,
+  words,
+  plates,
+  badges,
+  cropX = 420,
+}) => {
   const shortWords = words
     .map((w) => {
       const t = toShort(segments, w.t);
@@ -294,7 +304,7 @@ export const Short: React.FC<Props> = ({ master, title, segments, words, plates,
               <OffthreadVideo
                 src={staticFile(master)}
                 trimBefore={f(s.from)}
-                style={{ position: "absolute", left: -420, top: 0, width: 1920, height: 1080 }}
+                style={{ position: "absolute", left: -cropX, top: 0, width: 1920, height: 1080 }}
               />
             </Series.Sequence>
           ))}
