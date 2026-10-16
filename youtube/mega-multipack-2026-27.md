@@ -2,6 +2,14 @@
 
 Обложка (1280×720): https://d2ol7oe51mr4n9.cloudfront.net/user_3KXZL8xCtsJYmfCAlOradmYVzkP/5724ec54-7cfa-410d-9ff0-6173b1f2e463.jpg
 
+## Файлы
+
+- Выпуск (6:21): https://d2ol7oe51mr4n9.cloudfront.net/user_3KXZL8xCtsJYmfCAlOradmYVzkP/2d05d2d9-b9e0-46f5-aa7f-58445dbb747d.mp4
+- Черновик с аватаром cards_lover (вставки 0:06–0:13 и 3:24–3:33, 480p): https://d2ol7oe51mr4n9.cloudfront.net/user_3KXZL8xCtsJYmfCAlOradmYVzkP/2930263c-baa3-4b22-b542-c7c30cbcdd45.mp4
+- Short 1: https://d2ol7oe51mr4n9.cloudfront.net/user_3KXZL8xCtsJYmfCAlOradmYVzkP/6b95c056-6e98-4b06-9ed4-6b659575cea9.mp4
+- Short 2: https://d2ol7oe51mr4n9.cloudfront.net/user_3KXZL8xCtsJYmfCAlOradmYVzkP/b4e443c2-9cd0-456f-8bc1-2345a71855e8.mp4
+- Short 3: https://d2ol7oe51mr4n9.cloudfront.net/user_3KXZL8xCtsJYmfCAlOradmYVzkP/b82cec7a-d715-44b6-a82c-0b327acae507.mp4
+
 ## Название
 
     Гиггз в мега-мультипаке! 6 лимиток и Infinity | Match Attax 2026/27
