@@ -20,6 +20,8 @@ type Plate = {
   readonly dur?: number;
 };
 type Badge = { readonly t: number; readonly text: string };
+/** Avatar talking-head insert (camera A): replaces the picture, keeps the master audio. */
+type Avatar = { readonly t: number; readonly dur: number; readonly src: string };
 
 /** Output of tools/build_edit.py: the tightened master and everything timed on it. */
 type Props = {
@@ -29,6 +31,7 @@ type Props = {
   readonly words: Word[];
   readonly plates: Plate[];
   readonly badges: Badge[];
+  readonly avatars?: Avatar[];
 };
 
 const FPS = 30;
@@ -141,6 +144,7 @@ export const FullLight: React.FC<Props> = ({
   words,
   plates,
   badges,
+  avatars = [],
 }) => {
   const body = f(duration);
   return (
@@ -155,6 +159,17 @@ export const FullLight: React.FC<Props> = ({
       </Sequence>
       <Sequence from={INTRO} durationInFrames={body}>
         <Master src={master} cuts={cuts} />
+        {avatars.map((a, i) => (
+          <Sequence key={`a${i}`} from={f(a.t)} durationInFrames={f(a.dur)}>
+            <AbsoluteFill style={{ backgroundColor: "black" }}>
+              <OffthreadVideo
+                src={staticFile(a.src)}
+                muted
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </AbsoluteFill>
+          </Sequence>
+        ))}
         <Captions words={words} />
       </Sequence>
       {plates.map((p, i) => (
